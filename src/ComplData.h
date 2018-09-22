@@ -1,8 +1,6 @@
 #ifndef COMPLDATA_H_
 #define COMPLDATA_H_
 
-#include <algorithm>
-#include <iterator>
 #include <ostream>
 #include <vector>
 
@@ -14,22 +12,10 @@ namespace vbc
     {
         std::vector<ComplWord> words;
 
-        void write(std::ostream& stream) const
-        {
-            stream << "{'words': [";
-
-            std::copy(words.begin(), words.end(),
-                      std::ostream_iterator<ComplWord>(stream, ", "));
-
-            stream << "]}";
-        }
+        void write(std::ostream& stream) const;
     };
 
-    std::ostream& operator<<(std::ostream& stream, const ComplData& data)
-    {
-        data.write(stream);
-        return stream;
-    }
+    std::ostream& operator<<(std::ostream& stream, const ComplData& data);
 }
 
 #endif /* define COMPLDATA_H_ */
