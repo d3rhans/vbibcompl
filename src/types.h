@@ -8,7 +8,6 @@
 namespace vbc
 {
     using BibEntry = std::map<std::string, std::string>;
-    using BibData = std::vector<BibEntry>;
     using FileNameContainer = std::vector<std::string>;
 }
 

@@ -64,10 +64,6 @@ bool vbc::isToken(const std::string& line, std::cmatch& match)
 void vbc::processBibFiles(const FileNameContainer& bibfiles, ComplData& complData)
 {
     vbc::BibEntry bibEntry;
-    vbc::BibData bibData;
-
-    vbc::ComplWord cw;
-
     std::cmatch currentMatch;
 
     for(const auto& filename: bibfiles) {
@@ -75,10 +71,8 @@ void vbc::processBibFiles(const FileNameContainer& bibfiles, ComplData& complDat
 
         for(std::string line; std::getline(bibFile, line); /**/) {
             if(vbc::isNewEntry(line, currentMatch)) {
-                if(!bibEntry.empty()) {
-                    bibData.push_back(bibEntry);
-                    bibEntry.clear();
-                }
+                storeBibEntry(bibEntry, complData);
+
                 bibEntry.emplace(std::make_pair("bibtype", currentMatch[1]));
                 bibEntry.emplace(std::make_pair("bibkey", currentMatch[2]));
                 bibEntry.emplace(std::make_pair("file", filename));
@@ -88,14 +82,17 @@ void vbc::processBibFiles(const FileNameContainer& bibfiles, ComplData& complDat
                 bibEntry.emplace(std::make_pair(currentMatch[1], currentMatch[2]));
             }
         }
-        if(!bibEntry.empty()) {
-            bibData.push_back(bibEntry);
-            bibEntry.clear();
-        }
+        storeBibEntry(bibEntry, complData);
     }
+}
 
-    for(const auto& entry: bibData) {
-        vbc::bibEntryToCompWord(entry, cw);
+void vbc::storeBibEntry(BibEntry& bibEntry, ComplData& complData)
+{
+    static ComplWord cw;
+
+    if(!bibEntry.empty()) {
+        vbc::bibEntryToCompWord(bibEntry, cw);
         complData.words.push_back(cw);
+        bibEntry.clear();
     }
 }
