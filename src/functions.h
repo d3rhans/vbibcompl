@@ -14,6 +14,8 @@ namespace vbc
 
     bool isNewEntry(const std::string& line, std::cmatch& match);
     bool isToken(const std::string& line, std::cmatch& match);
+
+    void processBibFiles(const FileNameContainer& bibfiles, ComplData& complData);
 }
 
 #endif /* define FUNCTIONS_H_ */
