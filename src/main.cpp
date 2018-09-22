@@ -1,21 +1,16 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
-#include <map>
 #include <regex>
-#include <string>
 
 
+#include "types.h"
 #include "ComplData.h"
 
 namespace fs = std::filesystem;
 
 namespace vbc
 {
-    using BibEntry = std::map<std::string, std::string>;
-    using BibData = std::vector<BibEntry>;
-    using FileNameContainer = std::vector<std::string>;
-
     void bibEntryToCompWord(const BibEntry& bibEntry, ComplWord& word)
     {
         const std::map<std::string, std::string> TOKEN{{"bibkey", "%k"},
