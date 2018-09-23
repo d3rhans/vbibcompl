@@ -2,6 +2,7 @@
 #include <fstream>
 
 #include "functions.h"
+#include "LineChecker.h"
 
 namespace fs = std::filesystem;
 
@@ -60,30 +61,19 @@ void vbc::getBibFiles(const std::string& dir, FileNameContainer& bibfiles)
     }
 }
 
-bool vbc::isNewEntry(const std::string& line, std::cmatch& match)
-{
-    const std::regex entryRegex("^\\s*@([a-zA-Z]+)\\{(.+),\\s*$");
-
-    return std::regex_match(line.c_str(), match, entryRegex);
-}
-
-bool vbc::isToken(const std::string& line, std::cmatch& match)
-{
-    const std::regex tokeRegex("^\\s*([a-zA-Z]+)\\s*=\\s*[\"\\{]+(.*)[\\}\",]+");
-
-    return std::regex_match(line.c_str(), match, tokeRegex);
-}
 
 void vbc::processBibFiles(const FileNameContainer& bibfiles, ComplData& complData)
 {
-    vbc::BibEntry bibEntry;
+    BibEntry bibEntry;
     std::cmatch currentMatch;
+
+    LineChecker lineChecker;
 
     for(const auto& filename: bibfiles) {
         std::ifstream bibFile(filename);
 
         for(std::string line; std::getline(bibFile, line); /**/) {
-            if(vbc::isNewEntry(line, currentMatch)) {
+            if(lineChecker.isNewEntry(line, currentMatch)) {
                 storeBibEntry(bibEntry, complData);
 
                 bibEntry.emplace(std::make_pair("bibtype", currentMatch[1]));
@@ -91,7 +81,7 @@ void vbc::processBibFiles(const FileNameContainer& bibfiles, ComplData& complDat
                 bibEntry.emplace(std::make_pair("file", filename));
             }
 
-            if(vbc::isToken(line, currentMatch)) {
+            if(lineChecker.isToken(line, currentMatch)) {
                 bibEntry.emplace(std::make_pair(currentMatch[1], currentMatch[2]));
             }
         }

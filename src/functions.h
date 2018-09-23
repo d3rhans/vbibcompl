@@ -14,9 +14,6 @@ namespace vbc
     void setFiles(const ProgramOptions& options, FileNameContainer& bibFiles);
     void getBibFiles(const std::string& dir, FileNameContainer& bibfiles);
 
-    bool isNewEntry(const std::string& line, std::cmatch& match);
-    bool isToken(const std::string& line, std::cmatch& match);
-
     void processBibFiles(const FileNameContainer& bibfiles, ComplData& complData);
 
     void storeBibEntry(BibEntry& bibEntry, ComplData& complData);
