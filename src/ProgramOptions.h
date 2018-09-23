@@ -33,6 +33,7 @@ namespace vbc
             std::string getInputFile() const;
             std::string getInputDir() const;
             std::string getOutputfile() const;
+            std::string getInfoPattern() const;
 
 
     };

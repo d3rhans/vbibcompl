@@ -48,7 +48,7 @@ void vbc::processBibFiles(const FileNameContainer& bibfiles, ComplData& complDat
 
         for(std::string line; std::getline(bibFile, line); /**/) {
             if(lineChecker.isNewEntry(line, currentMatch)) {
-                storeBibEntry(bibEntry, complData);
+                complData.addBibEntry(bibEntry);
 
                 bibEntry.emplace(std::make_pair("bibtype", currentMatch[1]));
                 bibEntry.emplace(std::make_pair("bibkey", currentMatch[2]));
@@ -59,18 +59,6 @@ void vbc::processBibFiles(const FileNameContainer& bibfiles, ComplData& complDat
                 bibEntry.emplace(std::make_pair(currentMatch[1], currentMatch[2]));
             }
         }
-        storeBibEntry(bibEntry, complData);
-    }
-}
-
-void vbc::storeBibEntry(BibEntry& bibEntry, ComplData& complData)
-{
-    static ComplWord cw;
-    static Converter conv;
-
-    if(!bibEntry.empty()) {
-        conv.bibEntryToComplWord(bibEntry, cw);
-        complData.words.push_back(cw);
-        bibEntry.clear();
+        complData.addBibEntry(bibEntry);
     }
 }

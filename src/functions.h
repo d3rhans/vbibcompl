@@ -14,8 +14,6 @@ namespace vbc
     void getBibFiles(const std::string& dir, FileNameContainer& bibfiles);
 
     void processBibFiles(const FileNameContainer& bibfiles, ComplData& complData);
-
-    void storeBibEntry(BibEntry& bibEntry, ComplData& complData);
 }
 
 #endif /* define FUNCTIONS_H_ */

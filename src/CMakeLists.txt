@@ -15,3 +15,5 @@ add_executable(vbibcompl main.cpp
                          )
 
 target_link_libraries(vbibcompl stdc++fs)
+
+install(TARGETS vbibcompl DESTINATION bin)
