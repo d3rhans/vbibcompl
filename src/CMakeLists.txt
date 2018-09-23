@@ -6,6 +6,9 @@ add_executable(vbibcompl main.cpp
                          functions.cpp
                          ComplWord.cpp
                          ComplData.cpp
+                         Output.cpp
+                         OutputFile.cpp
+                         OutputSTD.cpp
                          ProgramOptions.cpp
                          )
 

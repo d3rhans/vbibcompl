@@ -10,13 +10,21 @@ Consider you want to trigger completion in a LaTeX file at
 vbibcompl traverses all Bibtex files in the current directory and subdirectories and 
 generates a dictonary structure as required by vim.
 
+## Usage
+
+Run
+     
+     vbibcompl -h
+
+For usage options
+
 ## Example usage
 
 Create e.g., an autocommand in vim, when you save a bib file (in your ~/.vimrc):
 
     augroup bibcompl
     au!
-    au BufWrite *.bib <silent>:call system('vbibcompl > bibcompl.txt')
+    au BufWrite *.bib <silent>:call system('vbibcompl -o bibcompl.txt')
     augroup end
 
 This will run the program, each time a Bibtex file is saved and store the results in 
