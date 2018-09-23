@@ -10,7 +10,6 @@
 
 namespace vbc
 {
-    void bibEntryToCompWord(const BibEntry& bibEntry, ComplWord& word);
     void setFiles(const ProgramOptions& options, FileNameContainer& bibFiles);
     void getBibFiles(const std::string& dir, FileNameContainer& bibfiles);
 

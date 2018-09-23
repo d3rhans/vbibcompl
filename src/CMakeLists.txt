@@ -6,6 +6,7 @@ add_executable(vbibcompl main.cpp
                          functions.cpp
                          ComplWord.cpp
                          ComplData.cpp
+                         Converter.cpp
                          LineChecker.cpp
                          Output.cpp
                          OutputFile.cpp

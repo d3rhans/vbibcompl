@@ -2,36 +2,10 @@
 #include <fstream>
 
 #include "functions.h"
+#include "Converter.h"
 #include "LineChecker.h"
 
 namespace fs = std::filesystem;
-
-void vbc::bibEntryToCompWord(const BibEntry& bibEntry, ComplWord& word)
-{
-    const std::map<std::string, std::string> TOKEN{{"bibkey", "%k"},
-        {"file", "%f"},
-        {"bibtype", "%p"},
-        {"author", "%a"},
-        {"title", "%t"},
-        {"year", "%y"}};
-
-    const std::string INFO_PATTERN{"%a: %t - %p (%y)"};
-
-    word.word = bibEntry.find("bibkey")->second;
-    word.menu = bibEntry.find("file")->second;
-
-    word.info = INFO_PATTERN;
-
-    for(const auto& token: TOKEN) {
-        auto bibToken = bibEntry.find(token.first);
-
-        if(bibToken != bibEntry.end()) {
-            word.info = std::regex_replace(word.info,
-                    std::regex(token.second),
-                    bibToken->second);
-        }
-    }
-}
 
 void vbc::setFiles(const ProgramOptions& options, FileNameContainer& bibFiles)
 {
@@ -92,9 +66,10 @@ void vbc::processBibFiles(const FileNameContainer& bibfiles, ComplData& complDat
 void vbc::storeBibEntry(BibEntry& bibEntry, ComplData& complData)
 {
     static ComplWord cw;
+    static Converter conv;
 
     if(!bibEntry.empty()) {
-        vbc::bibEntryToCompWord(bibEntry, cw);
+        conv.bibEntryToComplWord(bibEntry, cw);
         complData.words.push_back(cw);
         bibEntry.clear();
     }
