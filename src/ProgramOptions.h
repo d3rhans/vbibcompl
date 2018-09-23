@@ -30,6 +30,10 @@ namespace vbc
             bool inputDirSet() const;
             bool outputFileSet() const;
 
+            std::string getInputFile() const;
+            std::string getInputDir() const;
+            std::string getOutputfile() const;
+
 
     };
 }

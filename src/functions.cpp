@@ -32,6 +32,19 @@ void vbc::bibEntryToCompWord(const BibEntry& bibEntry, ComplWord& word)
     }
 }
 
+void vbc::setFiles(const ProgramOptions& options, FileNameContainer& bibFiles)
+{
+    const std::string DEFAULT_DIR{"."};
+
+    if(options.inpuFileSet()) {
+        bibFiles.push_back(options.getInputFile());
+    } else if(options.inputDirSet()) {
+        getBibFiles(options.getInputDir(), bibFiles);
+    } else {
+        getBibFiles(DEFAULT_DIR, bibFiles);
+    }
+}
+
 void vbc::getBibFiles(const std::string& dir, FileNameContainer& bibfiles)
 {
     const fs::path BIB_EXTENSION{".bib"};

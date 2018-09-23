@@ -6,10 +6,12 @@
 #include "types.h"
 #include "ComplWord.h"
 #include "ComplData.h"
+#include "ProgramOptions.h"
 
 namespace vbc
 {
     void bibEntryToCompWord(const BibEntry& bibEntry, ComplWord& word);
+    void setFiles(const ProgramOptions& options, FileNameContainer& bibFiles);
     void getBibFiles(const std::string& dir, FileNameContainer& bibfiles);
 
     bool isNewEntry(const std::string& line, std::cmatch& match);

@@ -104,3 +104,19 @@ bool vbc::ProgramOptions::outputFileSet() const
 {
     return d->outputFile;
 }
+
+
+std::string vbc::ProgramOptions::getInputFile() const
+{
+    return d->inputFileName;
+}
+
+std::string vbc::ProgramOptions::getInputDir() const
+{
+    return d->inputDirName;
+}
+
+std::string vbc::ProgramOptions::getOutputfile() const
+{
+    return d->outputFileName;
+}

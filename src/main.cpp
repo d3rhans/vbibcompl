@@ -5,7 +5,6 @@
 #include "ComplData.h"
 #include "ProgramOptions.h"
 
-
 int main(int argc, char** argv)
 {
     vbc::FileNameContainer bibFiles;
@@ -16,7 +15,7 @@ int main(int argc, char** argv)
     if(options.error() || options.helpRequested()) {
        options.printUsage();
     } else {
-        vbc::getBibFiles(".", bibFiles);
+        vbc::setFiles(options, bibFiles);
         vbc::processBibFiles(bibFiles, complData);
 
         std::cout << complData << std::endl;
