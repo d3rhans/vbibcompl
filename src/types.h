@@ -1,14 +1,13 @@
 #ifndef TYPES_H_
 #define TYPES_H_
 
-#include <map>
 #include <string>
 #include <vector>
 
 namespace vbc
 {
-    using BibEntry = std::map<std::string, std::string>;
-    using FileNameContainer = std::vector<std::string>;
+    using FileName = std::string;
+    using FileNameContainer = std::vector<FileName>;
 }
 
 #endif /* define TYPES_H_ */

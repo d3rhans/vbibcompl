@@ -15,16 +15,16 @@ struct vbc::ProgramOptions::ProgramOptionsD
     bool help       = false;
     bool error      = false;
 
-    std::string inputFileName;
-    std::string inputDirName;
-    std::string outputFileName;
-    std::string infoPattern{"%a: %t - %p (%y)"};
+    FileName inputFileName;
+    FileName inputDirName;
+    FileName outputFileName;
+    FileName infoPattern{"%a: %t - %p (%y)"};
 
     void validate()
     {
-        bool inputFileAndDir   = inputFile && inputDir;
-        bool inputFileMissing  = inputFile && inputFileName.empty();
-        bool inputDirMissing   = inputDir && inputDirName.empty();
+        bool inputFileAndDir   = inputFile  && inputDir;
+        bool inputFileMissing  = inputFile  && inputFileName.empty();
+        bool inputDirMissing   = inputDir   && inputDirName.empty();
         bool outputFileMissing = outputFile && outputFileName.empty();
 
         error = inputFileAndDir || inputFileMissing || inputDirMissing || outputFileMissing;
@@ -117,22 +117,22 @@ bool vbc::ProgramOptions::outputFileSet() const
     return d->outputFile;
 }
 
-std::string vbc::ProgramOptions::getInputFile() const
+vbc::FileName vbc::ProgramOptions::getInputFile() const
 {
     return d->inputFileName;
 }
 
-std::string vbc::ProgramOptions::getInputDir() const
+vbc::FileName vbc::ProgramOptions::getInputDir() const
 {
     return d->inputDirName;
 }
 
-std::string vbc::ProgramOptions::getOutputfile() const
+vbc::FileName vbc::ProgramOptions::getOutputfile() const
 {
     return d->outputFileName;
 }
 
-std::string vbc::ProgramOptions::getInfoPattern() const
+vbc::FileName vbc::ProgramOptions::getInfoPattern() const
 {
     return d->infoPattern;
 }

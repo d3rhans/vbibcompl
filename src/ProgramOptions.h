@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include "types.h"
+
 namespace vbc
 {
     class ProgramOptions
@@ -26,14 +28,14 @@ namespace vbc
             bool error() const;
             bool helpRequested() const;
 
-            bool inpuFileSet() const;
-            bool inputDirSet() const;
+            bool inpuFileSet()   const;
+            bool inputDirSet()   const;
             bool outputFileSet() const;
 
-            std::string getInputFile() const;
-            std::string getInputDir() const;
-            std::string getOutputfile() const;
-            std::string getInfoPattern() const;
+            FileName getInputFile()   const;
+            FileName getInputDir()    const;
+            FileName getOutputfile()  const;
+            FileName getInfoPattern() const;
 
 
     };
