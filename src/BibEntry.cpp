@@ -1,4 +1,3 @@
-
 #include "BibEntry.h"
 
 struct vbc::BibEntry::BibEntryD
