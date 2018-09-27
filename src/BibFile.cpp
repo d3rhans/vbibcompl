@@ -1,11 +1,11 @@
 #include <fstream>
 
+#include "BibEntry.h"
 #include "BibFile.h"
 
 struct vbc::BibFile::BibFileD
 {
     std::ifstream file;
-    FileName filename;
 };
 
 vbc::BibFile::BibFile(const FileName& filename)

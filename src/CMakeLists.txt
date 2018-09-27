@@ -4,7 +4,10 @@ project(vbibcompl)
 
 add_executable(vbibcompl 
                     main.cpp 
+                    BibEntry.cpp
+                    BibFile.cpp
                     BibFiles.cpp
+                    BibLine.cpp
                     ProgramOptions.cpp
               )
 
