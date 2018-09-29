@@ -1,9 +1,9 @@
-#include <iostream>
-
 #include "filesystem.h"
 
 #include "BibFile.h"
 #include "CompletionData.h"
+#include "Output.h"
+
 #include "Controller.h"
 
 
@@ -49,6 +49,9 @@ void vbc::Controller::execute()
             }
         }
 
-        std::cout << complData << std::endl;
+        if(!complData.empty()) {
+            Output::Pointer output = Output::getOutput(d->options);
+            output->execute(complData);
+        }
     }
 }

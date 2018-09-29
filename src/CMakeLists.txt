@@ -10,6 +10,9 @@ add_executable(vbibcompl
                     CompletionData.cpp
                     CompletionWord.cpp
                     Controller.cpp
+                    Output.cpp
+                    OutputFile.cpp
+                    OutputSTD.cpp
                     ProgramOptions.cpp
               )
 

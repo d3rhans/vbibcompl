@@ -34,6 +34,7 @@ namespace vbc
             void createWord(const BibLine& line, const FileName& bibFile);
             void addToCurrent(const BibLine& line);
 
+            bool empty() const;
             void sort();
 
             void write(std::ostream& os) const;

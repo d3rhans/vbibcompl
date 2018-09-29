@@ -34,6 +34,11 @@ void vbc::CompletionData::addToCurrent(const BibLine& line)
     }
 }
 
+bool vbc::CompletionData::empty() const
+{
+    return d->words.empty();
+}
+
 void vbc::CompletionData::sort()
 {
     std::sort(d->words.begin(), d->words.end());
