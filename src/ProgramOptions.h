@@ -14,6 +14,7 @@ namespace vbc
             std::unique_ptr<ProgramOptionsD> d;
 
         public:
+            ProgramOptions();
             ProgramOptions(int argc, char** argv);
             ~ProgramOptions();
 
@@ -21,7 +22,7 @@ namespace vbc
             ProgramOptions(ProgramOptions&& rhs) = delete;
 
             ProgramOptions& operator=(const ProgramOptions& rhs) = delete;
-            ProgramOptions& operator=(ProgramOptions&& rhs) = delete;
+            ProgramOptions& operator=(ProgramOptions&& rhs);
 
             void printUsage() const;
 

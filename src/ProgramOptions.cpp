@@ -31,6 +31,12 @@ struct vbc::ProgramOptions::ProgramOptionsD
     }
 };
 
+vbc::ProgramOptions::ProgramOptions()
+    : d(std::make_unique<ProgramOptionsD>())
+{
+
+}
+
 vbc::ProgramOptions::ProgramOptions(int argc, char** argv)
     : d(std::make_unique<ProgramOptionsD>())
 {
@@ -65,6 +71,12 @@ vbc::ProgramOptions::ProgramOptions(int argc, char** argv)
     }
 
     d->validate();
+}
+
+vbc::ProgramOptions& vbc::ProgramOptions::operator=(ProgramOptions&& rhs)
+{
+    d = std::move(rhs.d);
+    return *this;
 }
 
 vbc::ProgramOptions::~ProgramOptions() = default;
