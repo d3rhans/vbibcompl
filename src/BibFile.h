@@ -1,9 +1,11 @@
 #ifndef BIBFILE_H_
 #define BIBFILE_H_
 
+#include <iterator>
 #include <memory>
 
-#include "types.h"
+#include "filesystem.h"
+#include "BibLine.h"
 
 namespace vbc
 {
@@ -14,10 +16,21 @@ namespace vbc
             std::unique_ptr<BibFileD> d;
 
         public:
+            using iterator = std::istream_iterator<BibLine>;
+
             BibFile(const FileName& filename);
+
+            BibFile() = delete;
+            BibFile(const BibFile& other) = delete;
+            BibFile(BibFile&& other) = delete;
 
             ~BibFile();
 
+            BibFile& operator=(const BibLine& rhs) = delete;
+            BibFile& operator=(BibFile&& rhs) = delete;
+
+            iterator begin();
+            iterator end();
     };
 }
 

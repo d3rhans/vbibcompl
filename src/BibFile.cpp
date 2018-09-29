@@ -15,3 +15,13 @@ vbc::BibFile::BibFile(const FileName& filename)
 }
 
 vbc::BibFile::~BibFile() = default;
+
+vbc::BibFile::iterator vbc::BibFile::begin()
+{
+    return iterator(d->file);
+}
+
+vbc::BibFile::iterator vbc::BibFile::end()
+{
+    return iterator();
+}
