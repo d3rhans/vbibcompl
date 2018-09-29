@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <istream>
+#include <regex>
 #include <string>
 
 namespace vbc
@@ -26,9 +27,17 @@ namespace vbc
             ~BibLine();
 
             void setLine(LineType&& line);
+            LineType getLine() const;
+
+            bool isEmpty() const;
+            bool isEntry() const;
+            bool isToken() const;
+
+            const std::cmatch& getLastMatch() const;
     };
 
     std::istream& operator>>(std::istream& is, BibLine& bl);
+    std::ostream& operator<<(std::ostream& os, const BibLine& bl);
 }
 
 #endif /* define BIBLINE_H_ */
