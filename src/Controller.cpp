@@ -1,12 +1,15 @@
+#include <iostream>
+
 #include "filesystem.h"
 
 #include "BibFile.h"
 #include "Controller.h"
 
+
 struct vbc::Controller::ControllerD
 {
     ProgramOptions options;
-    FileNameContainer bibFileNames;
+    FileNameContainer bibFiles;
 };
 
 vbc::Controller::Controller(ProgramOptions&& options)
@@ -22,11 +25,26 @@ void vbc::Controller::execute()
     if(d->options.error() || d->options.helpRequested()) {
         d->options.printUsage();
     } else {
-        getBibFileNames(d->options, d->bibFileNames);
+        getBibFileNames(d->options, d->bibFiles);
 
-        for(BibFile bibFile: d->bibFileNames)
+        for(BibFile bibFile: d->bibFiles)
         {
+            for(auto& line: bibFile)
+            {
+                if(line.isEmpty()) {
+                   continue;
+                }
 
+                if(line.isEntry()) {
+                    // Handle Entry
+                    continue;
+                }
+
+                if(line.isToken()) {
+                    // Handle Token
+                    continue;
+                }
+            }
         }
     }
 }
