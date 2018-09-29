@@ -3,6 +3,7 @@
 #include "filesystem.h"
 
 #include "BibFile.h"
+#include "CompletionData.h"
 #include "Controller.h"
 
 
@@ -27,24 +28,27 @@ void vbc::Controller::execute()
     } else {
         getBibFileNames(d->options, d->bibFiles);
 
+        CompletionData complData(d->options);
+
         for(BibFile bibFile: d->bibFiles)
         {
             for(auto& line: bibFile)
             {
                 if(line.isEmpty()) {
-                   continue;
+                    continue;
                 }
 
                 if(line.isEntry()) {
-                    // Handle Entry
+                    complData.createWord(line, bibFile.getFileName());
                     continue;
                 }
 
                 if(line.isToken()) {
-                    // Handle Token
-                    continue;
+                    complData.addToCurrent(line);
                 }
             }
         }
+
+        std::cout << complData << std::endl;
     }
 }

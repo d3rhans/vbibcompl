@@ -3,7 +3,7 @@
 #include "BibLine.h"
 
 const std::regex entryRegex("^\\s*@([a-zA-Z]+)\\{(.+),\\s*$");
-const std::regex tokeRegex("^\\s*([a-zA-Z]+)\\s*=\\s*[\"\\{]+(.*)[\\}\",]+");
+const std::regex tokeRegex("^\\s*([a-zA-Z]+)\\s*=\\s*[\"\\{]*(.*)[\\}\",]*");
 
 struct vbc::BibLine::BibLineD
 {
@@ -31,7 +31,7 @@ vbc::BibLine::LineType vbc::BibLine::getLine() const
 
 bool vbc::BibLine::isEmpty() const
 {
-    return d->line.find_first_not_of(" \t\n\v\f\r") != std::string::npos;
+    return d->line.find_first_not_of(" \t\n\v\f\r") == std::string::npos;
 }
 
 bool vbc::BibLine::isEntry() const

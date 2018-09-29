@@ -7,6 +7,8 @@ add_executable(vbibcompl
                     filesystem.cpp
                     BibFile.cpp
                     BibLine.cpp
+                    CompletionData.cpp
+                    CompletionWord.cpp
                     Controller.cpp
                     ProgramOptions.cpp
               )

@@ -26,6 +26,8 @@ namespace vbc
 
             ~BibFile();
 
+            std::string getFileName() const;
+
             BibFile& operator=(const BibLine& rhs) = delete;
             BibFile& operator=(BibFile&& rhs) = delete;
 
