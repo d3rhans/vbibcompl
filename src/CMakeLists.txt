@@ -5,7 +5,6 @@ project(vbibcompl)
 add_executable(vbibcompl 
                     main.cpp 
                     filesystem.cpp
-                    BibEntry.cpp
                     BibFile.cpp
                     BibLine.cpp
                     Controller.cpp

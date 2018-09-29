@@ -1,6 +1,5 @@
 #include <fstream>
 
-#include "BibEntry.h"
 #include "BibFile.h"
 
 struct vbc::BibFile::BibFileD

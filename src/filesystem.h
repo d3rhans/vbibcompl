@@ -4,11 +4,12 @@
 #include <string>
 #include <vector>
 
-#include "ProgramOptions.h"
 
 
 namespace vbc
 {
+    class ProgramOptions;
+
     using DirName = std::string;
     using FileName = std::string;
     using FileNameContainer = std::vector<FileName>;
