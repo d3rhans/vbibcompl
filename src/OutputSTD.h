@@ -12,7 +12,14 @@ namespace vbc
 
         public:
             OutputSTD() = default;
+
+            OutputSTD(const OutputSTD& other) = delete;
+            OutputSTD(OutputSTD&& other)      = delete;
+
             virtual ~OutputSTD();
+
+            OutputSTD& operator=(const OutputSTD& rhs) = delete;
+            OutputSTD& operator=(OutputSTD&& rhs)      = delete;
     };
 }
 

@@ -11,6 +11,8 @@ namespace vbc
     class Output
     {
         protected:
+            Output() = default;
+
             virtual void _execute(const CompletionData& data) = 0;
 
         public:
@@ -18,14 +20,13 @@ namespace vbc
 
             static Pointer getOutput(const ProgramOptions& options);
 
-            Output() = default;
             Output(const Output& rhs) = delete;
-            Output(Output&& rhs) = delete;
+            Output(Output&& rhs)      = delete;
 
             virtual ~Output();
 
             Output& operator=(const Output& rhs) = delete;
-            Output& operator=(Output&& rhs) = delete;
+            Output& operator=(Output&& rhs)      = delete;
 
             void execute(const CompletionData& data);
 

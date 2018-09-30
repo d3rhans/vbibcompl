@@ -18,10 +18,15 @@ namespace vbc
 
         public:
             OutputFile(const std::string& filename);
+
+            OutputFile()                        = delete;
+            OutputFile(const OutputFile& other) = delete;
+            OutputFile(OutputFile&& other)      = delete;
+
             virtual ~OutputFile();
 
-
-
+            OutputFile& operator=(const OutputFile& rhs) = delete;
+            OutputFile& operator=(OutputFile&& rhs)      = delete;
     };
 }
 
