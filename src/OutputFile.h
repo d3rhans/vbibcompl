@@ -9,16 +9,18 @@ namespace vbc
 {
     class OutputFile : public Output
     {
-        public:
-            OutputFile(const std::string& filename);
-            virtual ~OutputFile();
+        private:
+            struct OutputFileD;
+            std::unique_ptr<OutputFileD> d;
 
         protected:
             void _execute(const CompletionData& data) override;
 
-        private:
-            struct OutputFileD;
-            std::unique_ptr<OutputFileD> d;
+        public:
+            OutputFile(const std::string& filename);
+            virtual ~OutputFile();
+
+
 
     };
 }

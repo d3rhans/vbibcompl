@@ -7,13 +7,12 @@ namespace vbc
 {
     class OutputSTD : public Output
     {
-        public:
-            OutputSTD() = default;
-            virtual ~OutputSTD();
-
         protected:
             void _execute(const CompletionData& data) override;
 
+        public:
+            OutputSTD() = default;
+            virtual ~OutputSTD();
     };
 }
 

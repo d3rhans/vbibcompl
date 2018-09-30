@@ -10,6 +10,9 @@ namespace vbc
 {
     class Output
     {
+        protected:
+            virtual void _execute(const CompletionData& data) = 0;
+
         public:
             using Pointer = std::unique_ptr<Output>;
 
@@ -26,8 +29,6 @@ namespace vbc
 
             void execute(const CompletionData& data);
 
-        protected:
-            virtual void _execute(const CompletionData& data) = 0;
     };
 
 }
