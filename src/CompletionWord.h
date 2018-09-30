@@ -1,29 +1,41 @@
 #ifndef COMPLETIONWORD_H_
 #define COMPLETIONWORD_H_
 
+#include <memory>
 #include <ostream>
 #include <string>
 
 namespace vbc
 {
-    struct CompletionWord
+    class CompletionWord
     {
-        std::string word;
-        std::string menu;
-        std::string info;
+        private:
+            struct CompletionWordD;
+            std::unique_ptr<CompletionWordD> d;
 
-        CompletionWord(const std::string& word,
-                       const std::string& menu,
-                       const std::string& infoPattern);
+        public:
 
-        void addToInfo(const std::string& key, const std::string& value);
+            CompletionWord(const std::string& word,
+                           const std::string& menu,
+                           const std::string& infoPattern);
 
-        void write(std::ostream& stream) const;
+            CompletionWord() = delete;
+            CompletionWord(const CompletionWord& other) = delete;
+            CompletionWord(CompletionWord&& other);
+
+            ~CompletionWord();
+
+            CompletionWord& operator=(const CompletionWord& rhs) = delete;
+            CompletionWord& operator=(CompletionWord&& rhs);
+
+            bool operator<(const CompletionWord& rhs) const;
+
+            void addToInfo(const std::string& key, const std::string& value);
+            void write(std::ostream& stream) const;
+
     };
 
     std::ostream& operator<<(std::ostream& stream, const CompletionWord& complWord);
-
-    bool operator<(const CompletionWord& lhs, const CompletionWord& rhs);
 }
 
 #endif /* define COMPLETIONWORD_H_ */
