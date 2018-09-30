@@ -12,6 +12,9 @@
 
 namespace vbc
 {
+    /**
+     * @brief The main application controller
+     */
     class Controller
     {
         private:
@@ -19,6 +22,11 @@ namespace vbc
             std::unique_ptr<ControllerD> d;
 
         public:
+            /**
+             * @brief The constructor
+             *
+             * @param options command line options passed to the program
+             */
             Controller(ProgramOptions&& options);
 
             Controller()                  = delete;
@@ -30,6 +38,9 @@ namespace vbc
 
             ~Controller();
 
+            /**
+             * @brief Execute main program
+             */
             void execute();
     };
 }

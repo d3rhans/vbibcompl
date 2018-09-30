@@ -12,6 +12,9 @@
 
 namespace vbc
 {
+    /**
+     * @brief File based output
+     */
     class OutputFile : public Output
     {
         private:
@@ -19,9 +22,19 @@ namespace vbc
             std::unique_ptr<OutputFileD> d;
 
         protected:
+            /**
+             * @brief Output implementation
+             *
+             * @param data the completion data to write to a file
+             */
             void _execute(const CompletionData& data) override;
 
         public:
+            /**
+             * @brief The constructor
+             *
+             * @param filename Name of the output file
+             */
             OutputFile(const std::string& filename);
 
             OutputFile()                        = delete;

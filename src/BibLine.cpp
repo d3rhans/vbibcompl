@@ -67,9 +67,3 @@ std::istream& vbc::operator>>(std::istream& is, BibLine& bl)
 
     return is;
 }
-
-std::ostream& vbc::operator<<(std::ostream& os, const BibLine& bl)
-{
-    os << bl.getLine();
-    return os;
-}

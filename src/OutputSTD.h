@@ -10,9 +10,17 @@
 
 namespace vbc
 {
+    /**
+     * @brief Output to STDOUT
+     */
     class OutputSTD : public Output
     {
         protected:
+            /**
+             * @brief Output implementation to STDOUT
+             *
+             * @param data output data
+             */
             void _execute(const CompletionData& data) override;
 
         public:

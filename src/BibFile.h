@@ -14,6 +14,9 @@
 
 namespace vbc
 {
+    /**
+     * @brief Abstraction and access for a BibTex File
+     */
     class BibFile
     {
         private:
@@ -23,20 +26,41 @@ namespace vbc
         public:
             using iterator = std::istream_iterator<BibLine>;
 
+            /**
+             * @brief The constructor
+             *
+             * @param filename Name of the BibTex file
+             */
             BibFile(const FileName& filename);
 
-            BibFile() = delete;
+            BibFile()                     = delete;
             BibFile(const BibFile& other) = delete;
-            BibFile(BibFile&& other) = delete;
+            BibFile(BibFile&& other)      = delete;
 
             ~BibFile();
 
-            std::string getFileName() const;
+            /**
+             * @brief Get associated file name
+             *
+             * @return The filename
+             */
+            FileName getFileName() const;
 
             BibFile& operator=(const BibLine& rhs) = delete;
-            BibFile& operator=(BibFile&& rhs) = delete;
+            BibFile& operator=(BibFile&& rhs)      = delete;
 
+            /**
+             * @brief Iterator to first line
+             *
+             * @return the iterator
+             */
             iterator begin();
+
+            /**
+             * @brief Iterator to EOF
+             *
+             * @return the iterator
+             */
             iterator end();
     };
 }
