@@ -3,7 +3,6 @@
  * License: GNU GPLv3
  */
 
-#include <iostream>
 #include <algorithm>
 #include <map>
 #include <regex>
