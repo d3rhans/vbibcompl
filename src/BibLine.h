@@ -1,3 +1,8 @@
+/*
+ * Author: Hans Hohenfeld <hans.hohenfeld@posteo.de>
+ * License: GNU GPLv3
+ */
+
 #ifndef BIBLINE_H_
 #define BIBLINE_H_
 

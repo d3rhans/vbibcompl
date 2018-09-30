@@ -1,3 +1,8 @@
+/*
+ * Author: Hans Hohenfeld <hans.hohenfeld@posteo.de>
+ * License: GNU GPLv3
+ */
+
 #ifndef PROGRAMOPTIONS_H_
 #define PROGRAMOPTIONS_H_
 

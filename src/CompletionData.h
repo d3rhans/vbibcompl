@@ -1,3 +1,8 @@
+/*
+ * Author: Hans Hohenfeld <hans.hohenfeld@posteo.de>
+ * License: GNU GPLv3
+ */
+
 #ifndef COMPLETIONDATA_H_
 #define COMPLETIONDATA_H_
 

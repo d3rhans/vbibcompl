@@ -1,3 +1,8 @@
+/*
+ * Author: Hans Hohenfeld <hans.hohenfeld@posteo.de>
+ * License: GNU GPLv3
+ */
+
 #ifndef FILESYSTEM_H_
 #define FILESYSTEM_H_
 

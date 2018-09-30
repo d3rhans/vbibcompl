@@ -1,3 +1,8 @@
+/*
+ * Author: Hans Hohenfeld <hans.hohenfeld@posteo.de>
+ * License: GNU GPLv3
+ */
+
 #include <regex>
 
 #include "BibLine.h"
